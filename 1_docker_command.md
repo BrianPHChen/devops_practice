@@ -29,7 +29,28 @@
 
 顯示logs
 
-`docker container rm <container id/name>` 刪除容器也可以加上`-f` 強制刪除還在跑的 
+`docker container rm <container id/name>` 刪除容器也可以加上`-f` 強制刪除還在跑的
 
+> docker container top
 
+顯示一個容器內的process list
 
+> docker container inspect
+
+顯示一個容器內的config
+
+> docker container stats
+
+顯示所有容器的performance stats
+
+### Getting Shell
+
+> docker container run -it
+
+使用互動模式
+
+> docker container exec -it
+
+在已存在的container執行另外的command
+
+e.g. `docker container run -it --name proxy nginx bash` 會直接執行bash
