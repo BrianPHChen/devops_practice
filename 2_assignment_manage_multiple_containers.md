@@ -12,11 +12,15 @@
 ### Answer
 
 > docker container run -d -p 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+
 > docker container logs db
 
 找到 `2024-08-28 17:46:58+00:00 [Note] [Entrypoint]: GENERATED ROOT PASSWORD: gUuJ75TOKqlwgGupSkNNRj+YB7eifste`
 
 > docker container run -d --name webserver -p 8080:80 httpd
+
 > docker container run -d --name proxy -p 80:80 nginx
+
 > docker container stop e0d00560347a 4978a0842f62 07529065b2fe
+
 > docker container rm e0d00560347a 4978a0842f62 07529065b2fe
