@@ -38,3 +38,12 @@ build image
 
 `WORKDIR` 是類似cd的存在，可能會在執行不同命令時時常變換
 
+### Prune
+
+- docker image prune
+
+clean up just "dangling" images
+
+- docker system prune
+
+clean up eveything not currently using
