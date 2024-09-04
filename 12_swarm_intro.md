@@ -109,3 +109,27 @@ xb5zpu5o7ml5   great_mcnulty.3       alpine:latest   docker-desktop   Running   
 * digital ocean + docker install
   * most like a production setup, but costs $5-10/node/month while learning
   * install docker anywhere with get.docker.com
+
+### Overlay Multi-Host Networking
+* `--driver overlay` when createing network
+* For container-to-container traffic inside a single Swarm
+* Each service can be connected to multiple networks
+
+> $ docker network create --driver overlay mydrupal
+
+> $ docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypass postgres
+
+開另一個服務
+
+> $ docker service create --name drupal --network mydrupal -p 80:80 drupal
+
+內部自己做loadbalancer, 不論服務在哪個node
+
+> $ docker service create --name search --replicas 3 -p 9200:9200 elasticsearch:2
+
+> $ curl localhost:9200
+
+每次名稱可能不一樣
+
+* Routing Mesh
+  * This is stateless load balancing 
