@@ -132,4 +132,29 @@ xb5zpu5o7ml5   great_mcnulty.3       alpine:latest   docker-desktop   Running   
 每次名稱可能不一樣
 
 * Routing Mesh
-  * This is stateless load balancing 
+  * This is stateless load balancing
+
+### Swarm Stacks
+* Stacks: Production Grade Compose
+* `docker stack deploy`
+* 用 `deploy` in compose file, can't do `build`
+* Compose ignores `deploy`, swarm ignores `build`
+* `docker-compose` cli not needed on Swarm server
+
+### Secrets Storage
+* Easiest "secure" solution for storing secrets in Swarm
+* Only stored on disk on Manager nodes
+* Secrets are first stored in Swarm, then assigned to a Service
+* only container in assigned service can see them
+* looks like files but are actually in-memory fs
+* /run/secrets/<secret_name> or /run/secrets/<secret_alias>
+* Local docker-compose can use file-based secrets, but not secure
+
+Go to `secrets-sample-2` Assignement
+
+> $ docker stack deploy -c docker-compose.yml mydb
+
+> $ docker stack rm mydb 
+
+如果想要換密碼rm secret 就會需要重啟services
+使用檔案的話建議更新進去swarm讓他管理之後就把檔案刪掉
